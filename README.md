@@ -24,9 +24,9 @@ pip install -r requirements.txt
 ```
 To start the wepapp:
 ```buildoutcfg
-npm run dev-build
-python -m flaskapp
+./run.sh
 ```
+the webapp can be accessed at [http://localhost:8756](http://localhost:8756).
 
 ### References:
 - https://codeburst.io/creating-a-full-stack-web-application-with-python-npm-webpack-and-react-8925800503d9
