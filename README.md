@@ -41,6 +41,13 @@ the webapp can be accessed at [http://localhost:5001](http://localhost:5001). Th
 deactivate
 ```
 
+### Dockerize
+To run the webapp in docker containers, run
+```buildoutcfg
+docker-compose up
+```
+Two containers will be created. The webapp can be accessed at [https://localhost:5001](https://localhost:5001). If localhost doesn't work, try to replace the host with the ip of docker machine by `docker-machine ip`. 
+Very likely the ip is `192.168.99.100`.
 
 ### How it works
 Routing has been set up in `./flaskapp/routes.py` so that all urls go into frontend, which will be handled in `./static/src/App.js`. More routing options can be accommodated by adding `<Route />` accordingly. 
@@ -49,3 +56,4 @@ Some basic configuration of webpack has been set in `webpack.config.js` where th
 
 ### References:
 - https://codeburst.io/creating-a-full-stack-web-application-with-python-npm-webpack-and-react-8925800503d9
+- https://medium.com/@thimblot/using-docker-on-windows-without-hyper-v-troubleshooting-tips-2949587f796a
