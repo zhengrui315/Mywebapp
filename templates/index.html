@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>My Webapp</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </head>
 <body>
     <h1> Hello there!</h1>
     <div id="content"></div>
-    <script src="../src/dist/bundle.js" type="text/javascript"></script>
+    <script src="../static/dist/bundle.js" type="text/javascript"></script>
 </body>
 </html>

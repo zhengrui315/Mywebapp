@@ -2,7 +2,7 @@
   "name": "mywebapp",
   "version": "1.0.0",
   "description": "This is Flask-React webapp for my personal workspace.",
-  "main": "./src/js/index.js",
+  "main": "./static/src/index.js",
   "scripts": {
     "build": "webpack -p --progress --config webpack.config.js",
     "dev-build": "webpack --progress -d --config webpack.config.js",
