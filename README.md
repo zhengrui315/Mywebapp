@@ -49,3 +49,4 @@ Some basic configuration of webpack has been set in `webpack.config.js` where th
 
 ### References:
 - https://codeburst.io/creating-a-full-stack-web-application-with-python-npm-webpack-and-react-8925800503d9
+- https://medium.com/@thimblot/using-docker-on-windows-without-hyper-v-troubleshooting-tips-2949587f796a

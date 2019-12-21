@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  npm:
+    image: node
+    container_name: mywebapp_npm
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: bash -c "npm install && npm run dev-build"
+
+  flask:
+    build: .
+    container_name: mywebapp_flask
+    volumes:
+      - .:/app
+    ports:
+      - "5001:5000"
+    working_dir: /app
+    command: python -m flaskapp
+
