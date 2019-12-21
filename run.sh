@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-npm run dev-build && PORT=8756 python -m flaskapp
+npm run dev-build && PORT=5001 python -m flaskapp

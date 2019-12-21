@@ -1,6 +1,6 @@
 
 ### Intro
-This is skeleton Flask-React webapp for my personal workspace. It can be used as a template for building your own webapp. Backend code can be written into `./flaskapp/` while React components can be added in `./static/src/`. 
+This is a skeleton Flask-React webapp. It can be used as a template for building your own webapp. Backend code can be written into `./flaskapp/` while React components can be added in `./static/src/`. 
 
 ### Run the webapp
 prerequisites:
@@ -22,7 +22,11 @@ virtualenv -p python3 venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
-
+for backend and 
+```buildoutcfg
+npm install
+```
+for frontend.
 
 **To start the wepapp**
 
@@ -30,7 +34,7 @@ If not in virtual environment, enter by `source venv/bin/activate`, then
 ```buildoutcfg
 ./run.sh
 ```
-the webapp can be accessed at [http://localhost:8756](http://localhost:8756).
+the webapp can be accessed at [http://localhost:5001](http://localhost:5001). The port number can be set in `run.sh`. 
 
 **To exit the virtual environment**
 ```buildoutcfg
