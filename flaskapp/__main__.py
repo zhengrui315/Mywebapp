@@ -1,4 +1,4 @@
-from routes import app
+from flaskapp.routes import app
 
 
 if __name__ == '__main__':
@@ -6,4 +6,3 @@ if __name__ == '__main__':
     app.debug = True
     # app.config['JSON_SORT_KEYS'] = False
     app.run(host='0.0.0.0', port=5000)
-    # app.run()
