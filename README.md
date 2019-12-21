@@ -8,8 +8,14 @@ prerequisites:
 
 To download the repository:
 ```buildoutcfg
-git clone 
+git clone https://github.com/zhengrui315/Mywebapp.git
 ```
+or
+```buildoutcfg
+git clone git@github.com:zhengrui315/Mywebapp.git
+```
+if ssh key has been set up on github. 
+
 To set up local environment:
 ```buildoutcfg
 virtualenv -p python3 venv
