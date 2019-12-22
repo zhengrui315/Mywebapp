@@ -10,10 +10,13 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: mywebapp
       MYSQL_PASSWORD: mywebapp123
+      MYSQL_DATABASE: mydb
     ports:
       - "32000:3306"
     volumes:
-      - ./db:/docker-entrypoint-initdb.d/:ro
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --p $$MYSQL_PASSWORD
 
   npm:
     image: node
@@ -30,7 +33,10 @@ services:
       - .:/app
     ports:
       - "5001:5000"
-    links: db
+    links:
+      - db
     working_dir: /app
     command: python -m flaskapp
 
+volumes:
+  dbdata:

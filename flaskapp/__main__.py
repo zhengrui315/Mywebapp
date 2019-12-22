@@ -1,6 +1,7 @@
 from flaskapp.routes import app
-
+from flaskapp.model.initialization import initialize
 import os
+
 
 ENV_DEFAULTS = {
     'HOST': '0.0.0.0',
@@ -15,10 +16,22 @@ def get_env_var(varname):
         var = ENV_DEFAULTS[varname]
     return var
 
+def configure_app(app=app):
+    pass
+    # set up secret key
+
+    # set up database
+
+    # register blueprint
+
+    # set up admin
+
+
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True
 
     host = get_env_var('HOST')
     port = get_env_var('PORT')
+
     app.run(host=host, port=port)

@@ -49,10 +49,24 @@ docker-compose up
 Two containers will be created. The webapp can be accessed at [https://localhost:5001](https://localhost:5001). If localhost doesn't work, try to replace the host with the ip of docker machine by `docker-machine ip`. 
 Very likely the ip is `192.168.99.100`.
 
+To get an interactive prompt for a container, do:
+```buildoutcfg
+docker-compose exec db /bin/bash
+```
+and enter mysql by
+```buildoutcfg
+mysql -u root -p
+```
+and enter the password `root` as defined in `docker-compose.yml`. The containers cannot be accessed from outside the docker network.  
+
+
+
 ### How it works
 Routing has been set up in `./flaskapp/routes.py` so that all urls go into frontend, which will be handled in `./static/src/App.js`. More routing options can be accommodated by adding `<Route />` accordingly. 
 
 Some basic configuration of webpack has been set in `webpack.config.js` where the entry point is `./staic/src/index.js`. Webpack builds `./static/dist/index.js` which is injected into `./templates/index.html`.
+
+
 
 ### References:
 - https://codeburst.io/creating-a-full-stack-web-application-with-python-npm-webpack-and-react-8925800503d9
