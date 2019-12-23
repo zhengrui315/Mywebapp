@@ -14,7 +14,7 @@ services:
     ports:
       - "32000:3306"
     volumes:
-      - dbdata:/var/lib/mysql
+      - ./dbdata:/var/lib/mysql
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --p $$MYSQL_PASSWORD
 
@@ -34,9 +34,6 @@ services:
     ports:
       - "5001:5000"
     depends_on:
-      - db
+      - "db"
     working_dir: /app
     command: python -m flaskapp
-
-volumes:
-  dbdata:

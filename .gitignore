@@ -3,4 +3,5 @@
 node_modules
 *__pycache__*
 static/dist
-db
+dbdata
+tmp.txt
