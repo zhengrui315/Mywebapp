@@ -33,7 +33,7 @@ services:
       - .:/app
     ports:
       - "5001:5000"
-    links:
+    depends_on:
       - db
     working_dir: /app
     command: python -m flaskapp
