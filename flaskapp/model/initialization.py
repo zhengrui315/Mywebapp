@@ -9,10 +9,17 @@ def initialize():
     Session = sessionmaker(bind=engine)
 
     session = Session()
-    item1 = session.query(Item).filter_by(name='item1').first()
-    if not item1:
+    try:
+        item1 = session.query(Item).filter_by(name='item1').first()
+        if not item1:
 
-        item1 = Item(name='item1', description='sample description')
-        session.add(item1)
-        session.commit()
+            item1 = Item(name='item1', description='sample description')
+            session.add(item1)
+            session.commit()
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        session.close()
+
 

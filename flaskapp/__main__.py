@@ -1,4 +1,5 @@
-from flaskapp.routes import app
+from flaskapp.routes import app, base_bp
+from flaskapp.api_routes import api_bp
 from flaskapp.model.initialization import initialize
 import os
 
@@ -17,20 +18,21 @@ def get_env_var(varname):
     return var
 
 def configure_app(app=app):
-    pass
+    app.debug = True
+
     # set up secret key
+    app.secret_key = 'super_secret_key'
 
     # set up database
 
     # register blueprint
-
+    app.register_blueprint(base_bp)
+    app.register_blueprint(api_bp)
     # set up admin
 
 
 if __name__ == '__main__':
-    app.secret_key = 'super_secret_key'
-    app.debug = True
-
+    configure_app(app)
     host = get_env_var('HOST')
     port = get_env_var('PORT')
 
