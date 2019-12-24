@@ -28,3 +28,8 @@ def fetch_campsites():
     finally:
         session.close()
     return jsonify({'campsites':campsites})
+
+
+@api_bp.route('/campsite/add/', methods=['POST'])
+def add_campsite():
+    pass
