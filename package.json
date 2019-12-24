@@ -16,14 +16,17 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "css-loader": "^3.4.0",
+    "dotenv-webpack": "^1.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
+    "style-loader": "^1.1.1",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "babel-loader": "^8.0.6"
+    "babel-loader": "^8.0.6",
+    "google-map-react": "^1.1.5"
   },
   "babel": {
     "presets": [
