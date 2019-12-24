@@ -69,6 +69,11 @@ Some basic configuration of webpack has been set in `webpack.config.js` where th
 
 
 ### References:
+#### general:
 - https://codeburst.io/creating-a-full-stack-web-application-with-python-npm-webpack-and-react-8925800503d9
 - https://medium.com/@thimblot/using-docker-on-windows-without-hyper-v-troubleshooting-tips-2949587f796a
 - https://github.com/tomahim/react-flask-postgres-boilerplate-with-docker
+
+#### google map:
+- https://github.com/google-map-react/google-map-react
+- https://levelup.gitconnected.com/reactjs-google-maps-with-custom-marker-ece0c7d184c4

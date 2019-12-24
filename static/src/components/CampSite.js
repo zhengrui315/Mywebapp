@@ -13,24 +13,24 @@ class CampSite extends Component {
                 'longitude': null
             },
             zoom: 8,
-            markers: [
-                {
-                    id: 1,
-                    lat: 30.347296600000004,
-                    lng: -97.75502259999999
-                },
-                {
-                    id: 2,
-                    lat: 30,
-                    lng: -97
-                }
-            ]
+            markers: []
         };
     }
 
     componentDidMount() {
         this.getGeoLocation();
         this.getCampSites();
+    }
+
+    createMapOption(maps) {
+        return({
+            disableDefaultUI: true,
+            streetViewControl: false,
+            panControl: false,
+            mapTypeControl: true,
+            scrollwheel: true,
+            styles: [{ stylers: [{ 'saturation': -100 }, { 'gamma': 0.8 }, { 'lightness': 4 }, { 'visibility': 'on' }] }]
+        })
     }
 
     getGeoLocation() {
@@ -51,7 +51,7 @@ class CampSite extends Component {
     getCampSites() {
         axios.get('/api/campsites/')
             .then((resp) => {
-                this.setState({markers: resp.data.campsites});
+                this.setState({markers: [...this.state.markers, ...resp.data.campsites]});
             })
             .catch((err) => {
                 console.log(err);
@@ -73,6 +73,7 @@ class CampSite extends Component {
                         center={this.state.center}
                         zoom={this.state.zoom}
                         yesIWantToUseGoogleMapApiInternals
+                        options={this.createMapOptions}
                     >
                         {this.state.markers.map(marker => (
                             <Marker
