@@ -16,7 +16,6 @@ services:
     volumes:
       - ./dbdata:/var/lib/mysql
       - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql:ro
-
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --p $$MYSQL_PASSWORD
 

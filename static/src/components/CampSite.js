@@ -45,7 +45,9 @@ class CampSite extends Component {
                 });
             })
         } else {
-            error => console.log(error);
+            let errMsg = "Geolocation is not supported by this browser.";
+            log.err(errMsg);
+            alert(errMsg);
         }
     }
 

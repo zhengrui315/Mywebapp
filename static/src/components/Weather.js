@@ -20,7 +20,9 @@ class Weather extends Component {
                     this.getWeather(position.coords.latitude,  position.coords.longitude);
                 })
         } else {
-            error => console.log(error);
+            let errMsg = "Geolocation is not supported by this browser.";
+            log.err(errMsg);
+            alert(errMsg);
         }
     }
 
