@@ -38,3 +38,4 @@ services:
       - "db"
     working_dir: /app
     command: python -m flaskapp
+    restart: on-failure
