@@ -1,6 +1,6 @@
 
 ### Intro
-This is a skeleton Flask-React webapp. It can be used as a template for building your own webapp. Backend code can be written into `./flaskapp/` while React components can be added in `./static/src/`. 
+This is a skeleton Flask-React webapp for my personal workspace. It can be used as a template for building your own webapp. Backend code can be written into `./flaskapp/` while React components can be added in `./static/src/`. 
 
 ### Run the webapp
 prerequisites:
@@ -44,14 +44,18 @@ deactivate
 ### Dockerize
 To run the webapp in docker containers, run
 ```buildoutcfg
-docker-compose up
+docker-compose up db
 ```
-Two containers will be created. The webapp can be accessed at [https://localhost:5001](https://localhost:5001). If localhost doesn't work, try to replace the host with the ip of docker machine by `docker-machine ip`. 
+and then
+```buildoutcfg
+docker-compose up npm, flask
+```
+Three containers will be created. The webapp can be accessed at [https://localhost:5001](https://localhost:5001). If localhost doesn't work, try to replace the host with the ip of docker machine by `docker-machine ip`. 
 Very likely the ip is `192.168.99.100`.
 
-To get an interactive prompt for a container, do:
+To get an interactive prompt for a container, say mysql container, do:
 ```buildoutcfg
-docker-compose exec db /bin/bash
+docker-compose exec -it mywebapp_mysql /bin/bash
 ```
 and enter mysql by
 ```buildoutcfg
@@ -65,6 +69,12 @@ and enter the password `root` as defined in `docker-compose.yml`. The containers
 Routing has been set up in `./flaskapp/routes.py` so that all urls go into frontend, which will be handled in `./static/src/App.js`. More routing options can be accommodated by adding `<Route />` accordingly. 
 
 Some basic configuration of webpack has been set in `webpack.config.js` where the entry point is `./staic/src/index.js`. Webpack builds `./static/dist/index.js` which is injected into `./templates/index.html`.
+
+To initialize the database, `dump.sql` has been created and set up in `docker-compose.yml`. This `dump.sql` file can be created by `mysqldump` command. We can also populate the database by creating a python script such as `./flaskapp/model/initialization.py`, which can be run by
+```buildoutcfg
+python -m flaskapp.model.initialization
+```
+under root directory inside the flask container.
 
 
 

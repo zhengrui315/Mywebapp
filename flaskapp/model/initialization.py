@@ -1,4 +1,10 @@
 # one-time run to initialize the database
+# it should be ran inside flask container:
+# (1) enter the container by: docker exec -it mywebapp_flask /bin/bash
+# (2) under the root directory of the repo, run: python -m flaskapp.model.initialization
+# the alternative is to create a .sql file and add it to docker-compose.yml file: "- ./dump.sql:/docker-entrypoint-initdb.d/dump.sql:ro"
+# this sql file can be obtained using "mysqldump" command
+
 
 from flaskapp.model.utils import create_mysql_engine
 from flaskapp.model.models import Item

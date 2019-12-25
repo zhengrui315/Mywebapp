@@ -15,6 +15,8 @@ services:
       - "32000:3306"
     volumes:
       - ./dbdata:/var/lib/mysql
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql:ro
+
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --p $$MYSQL_PASSWORD
 
@@ -34,6 +36,6 @@ services:
     ports:
       - "5001:5000"
     depends_on:
-      - db
+      - "db"
     working_dir: /app
     command: python -m flaskapp
