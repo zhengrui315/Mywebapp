@@ -6,22 +6,24 @@ import MachineLearning from './components/MachineLearning';
 import CampSite from './components/CampSite';
 import AddCampSite from './components/AddCampSite';
 import NavBar from './components/NavBar';
+import NoMatch from './components/NoMatch';
 
 import './../css/main.css';
 
 const App = () => {
     return (
-        <div>
+        <Router>
             <NavBar />
             <div className="main-container">
-                <Router>
+                <Switch>
                     <Route exact path='/' component={HomePage} />
                     <Route exact path='/machinelearning/' component={MachineLearning} />
                     <Route exact path='/campsites/' component={CampSite} />
-                    <Route exact path='/add/campsite/' component={AddCampSite} />
-                </Router>
+                    <Route exact path='/campsite_add/' component={AddCampSite} />
+                    <Route component={NoMatch} />
+                </Switch>
             </div>
-        </div>
+        </Router>
     )
 }
 

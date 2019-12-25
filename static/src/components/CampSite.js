@@ -3,7 +3,6 @@ import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 
 import Marker from './Marker';
-import { Button } from 'reactstrap';
 
 class CampSite extends Component {
     constructor() {
@@ -67,8 +66,8 @@ class CampSite extends Component {
                         aria-label="Search"/>
                     <button className="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
                 </form>
-                <div className='side-map'>
-                    <Button href='/add/campsite/'> add new </Button>
+                <div className='map-sidebar'>
+                    <button href='/campsite_add/'> add new </button>
                 </div>
                 {/* Important! Always set the container height explicitly */}
                 <div className='googlemap'>

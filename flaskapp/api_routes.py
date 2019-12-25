@@ -32,4 +32,20 @@ def fetch_campsites():
 
 @api_bp.route('/campsite/add/', methods=['POST'])
 def add_campsite():
-    pass
+    data = request.get_json()
+    engine = create_mysql_engine()
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    try:
+        new_campsite = CampSite(name=data['name'],
+                                latitude=float(data['latitude']),
+                                longitude=float(data['longitude']),
+                                description=data['description'])
+        session.add(new_campsite)
+        session.commit()
+        return jsonify({'success':True, 'data':data})
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        session.close()
