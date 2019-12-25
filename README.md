@@ -48,7 +48,7 @@ docker-compose up db
 ```
 and then
 ```buildoutcfg
-docker-compose up npm, flask
+docker-compose up npm flask
 ```
 Three containers will be created. The webapp can be accessed at [https://localhost:5001](https://localhost:5001). If localhost doesn't work, try to replace the host with the ip of docker machine by `docker-machine ip`. 
 Very likely the ip is `192.168.99.100`.
