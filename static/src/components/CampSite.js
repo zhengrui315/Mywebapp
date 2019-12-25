@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 
@@ -66,27 +67,29 @@ class CampSite extends Component {
                         aria-label="Search"/>
                     <button className="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
                 </form>
-                <div className='map-sidebar'>
-                    <button href='/campsite_add/'> add new </button>
-                </div>
-                {/* Important! Always set the container height explicitly */}
-                <div className='googlemap'>
-                    <GoogleMapReact
-                        bootstrapURLKeys={{ key: process.env.GOOGLEAPIKEY}}
-                        center={this.state.center}
-                        zoom={this.state.zoom}
-                        yesIWantToUseGoogleMapApiInternals
-                        options={this.createMapOptions}
-                    >
-                        {this.state.markers.map(marker => (
-                            <Marker
-                                key={marker.id}
-                                lat={marker.lat}
-                                lng={marker.lng}
-                                color={'blue'}
-                            />
-                        ))}
-                    </GoogleMapReact>
+                <div>
+                    <div className='map-sidebar'>
+                        <Link to='/campsite_add/'><button> add new </button></Link>
+                    </div>
+                    {/* Important! Always set the container height explicitly */}
+                    <div className='googlemap'>
+                        <GoogleMapReact
+                            bootstrapURLKeys={{ key: process.env.GOOGLEAPIKEY}}
+                            center={this.state.center}
+                            zoom={this.state.zoom}
+                            yesIWantToUseGoogleMapApiInternals
+                            options={this.createMapOptions}
+                        >
+                            {this.state.markers.map(marker => (
+                                <Marker
+                                    key={marker.id}
+                                    lat={marker.lat}
+                                    lng={marker.lng}
+                                    color={'blue'}
+                                />
+                            ))}
+                        </GoogleMapReact>
+                    </div>
                 </div>
             </div>
         );
