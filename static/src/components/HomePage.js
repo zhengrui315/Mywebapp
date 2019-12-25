@@ -1,9 +1,10 @@
 import React from 'react';
+import Weather from './Weather';
 
 const HomePage = () => {
     return (
         <div>
-            welcome to my homepage!
+            <Weather />
         </div>
     )
 }
