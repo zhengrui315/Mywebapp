@@ -64,14 +64,17 @@ class CampSite extends Component {
     render() {
         return (
             <div>
-                <form className="form-inline md-form form-sm mt-0">
-                    <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-                        aria-label="Search"/>
-                    <button className="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
-                </form>
+                <div>
+                    <form className="form-inline md-form form-sm mt-0">
+                        <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+                            aria-label="Search"/>
+                        <button className="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
+                        <Link to='/campsite_add/' id="add-new"><button className="btn btn-outline-warning btn-rounded btn-sm my-0"> add new </button></Link>
+                    </form>
+                </div>
                 <div>
                     <div className='map-sidebar'>
-                        <Link to='/campsite_add/'><button> add new </button></Link>
+
                     </div>
                     {/* Important! Always set the container height explicitly */}
                     <div className='googlemap'>

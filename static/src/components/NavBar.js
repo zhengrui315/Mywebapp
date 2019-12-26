@@ -15,9 +15,6 @@ const NavBar = () => {
                 <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/machinelearning/">Machine Learning</a>
-              </li>
-              <li className="nav-item">
                 <a className="nav-link" href="/campsites/">Camping</a>
               </li>
               <li className="nav-item dropdown">
@@ -32,7 +29,7 @@ const NavBar = () => {
                 </div>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled" href="#">Disabled</a>
+                <a className="nav-link" href="/about/">About</a>
               </li>
             </ul>
 

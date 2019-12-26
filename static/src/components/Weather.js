@@ -6,11 +6,17 @@ class Weather extends Component {
         super();
         this.state = {
             'temp': null,
-            'weather': null
+            'weather': null,
+            'time': null
         }
     }
 
     componentDidMount() {
+        setInterval( () => {
+          this.setState({
+            'time' : new Date().toLocaleString()
+          })
+        },1000)
         this.getGeoLocation();
     }
 
@@ -45,20 +51,22 @@ class Weather extends Component {
 
     render() {
         return (
-            <div>
-                <h3>The current weather</h3>
-                {this.state.temp ? (
-                    <div className='weather-col'>
-                        <div id='fahrenheit'>{this.state.temp.tempF}</div>
-                        <div id='celsius'>{this.state.temp.tempC}</div>
-                    </div>
-                ) : 'Loading'}
+            <div className='homepage'>
+                <h2 style={{textAlign:"center"}}>{this.state.time}</h2>
+                <div className='weather'>
+                    {this.state.temp ? (
+                        <div className='weather-col'>
+                            <div id='fahrenheit'>{this.state.temp.tempF}</div>
+                            <div id='celsius'>{this.state.temp.tempC}</div>
+                        </div>
+                    ) : 'Loading'}
 
-                {this.state.weather ? (
-                    <div className='weather-col'>
-                        {Object.entries(this.state.weather).map(([k, v]) => <div key={k}> {k}: {v} </div>)}
-                    </div>
-                ) : ''}
+                    {this.state.weather ? (
+                        <div className='weather-col'>
+                            {Object.entries(this.state.weather).map(([k, v]) => <div key={k}> {k}: {v} </div>)}
+                        </div>
+                    ) : ''}
+                </div>
             </div>
         )
     }

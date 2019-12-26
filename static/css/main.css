@@ -26,3 +26,30 @@
     }
   }
 
+#add-new {
+    position: absolute;
+    right: 70px;
+}
+
+.weather {
+    margin-top: 20px;
+    height: 500px;
+}
+.weather-col {
+    width: 50%;
+    display: inline-block;
+}
+#fahrenheit {
+    position: absolute;
+    top: 130px;
+    left: 330px;
+    font-size: 40px;
+    text-align: center;
+}
+#celsius {
+    position: absolute;
+    top: 200px;
+    left: 350px;
+    font-size: 25px;
+    text-align: center;
+}
