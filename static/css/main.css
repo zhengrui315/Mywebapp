@@ -31,6 +31,9 @@
     right: 70px;
 }
 
+#content {
+    background-color: lightcyan;
+}
 .weather {
     margin-top: 20px;
     height: 500px;

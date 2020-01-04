@@ -6,3 +6,6 @@ static/dist
 dbdata
 tmp.txt
 .env
+.DS_Store
+webcrawler/*/*data
+webcrawler/*data

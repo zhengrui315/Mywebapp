@@ -10,13 +10,22 @@ MYSQL_DEFAULTS = {
     'DBNAME': 'mydb'
 }
 
+MYSQL_HOST = {
+    'HOST': 'localhost',
+    'PORT': 32000,
+    'USER': 'root',
+    'PASSWORD': 'root',
+    'DBNAME': 'mydb'
+}
+
 
 def create_mysql_engine():
-    user = MYSQL_DEFAULTS['USER']
-    password = MYSQL_DEFAULTS['PASSWORD']
-    host = MYSQL_DEFAULTS['HOST']
-    port = MYSQL_DEFAULTS['PORT']
-    dbname = MYSQL_DEFAULTS['DBNAME']
+    params = MYSQL_DEFAULTS
+    user = params['USER']
+    password = params['PASSWORD']
+    host = params['HOST']
+    port = params['PORT']
+    dbname = params['DBNAME']
 
     uri = f'mysql+mysqlconnector://{user}:{password}@{host}:{port}/{dbname}'
 

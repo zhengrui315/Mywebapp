@@ -26,7 +26,7 @@ class CampSite(Base):
     description = Column(String(1024))
     url = Column(String(512))
 
-    def __repr(self):
+    def __repr__(self):
         return f'<CampSite(name={self.name})>'
 
 ###  sample MySQL query for inserting into CampSite:
