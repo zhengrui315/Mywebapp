@@ -1,0 +1,1 @@
+This directory is for data preparation. The scripts should be  executed before running the webapp. Here a different virtual environment needs to be created using `requirements_scrape.txt`. 

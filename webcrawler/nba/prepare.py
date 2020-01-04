@@ -5,14 +5,11 @@ import requests
 
 
 def read_secrets():
-    params = {}
     with open('../../.env', 'r') as f:
         for l in f:
             if len(l.split('=')) == 2:
                 k, v = map(lambda x:x.strip(), l.split('='))
                 os.environ[k] = v
-
-    return params
 
 
 def get_coordinates(address):
@@ -24,7 +21,6 @@ def get_coordinates(address):
     coordinates = res['results'][0]['geometry']['location']
 
     return {'latitude': coordinates['lat'], 'longitude': coordinates['lng']}
-
 
 
 def main():
@@ -55,6 +51,7 @@ def main():
     with open(team_full, 'w') as f:
         json.dump(team, f)
     print('success')
+
 
 if __name__ == '__main__':
     main()
