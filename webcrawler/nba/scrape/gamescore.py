@@ -12,7 +12,27 @@ import requests
 from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 
-log = logging.getLogger(__name__)
+
+log = logging.getLogger('game_score_scraper')
+log.setLevel(logging.INFO)
+# Create handlers
+c_handler = logging.StreamHandler()
+c_handler.setLevel(logging.INFO)
+# Create formatters and add it to handlers
+c_format = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+c_handler.setFormatter(c_format)
+# Add handlers to the logger
+log.addHandler(c_handler)
+
+# Create handlers
+f_handler = logging.FileHandler('../logs/scraper.log')
+f_handler.setLevel(logging.INFO)
+# Create formatters and add it to handlers
+f_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+f_handler.setFormatter(f_format)
+# Add handlers to the logger
+log.addHandler(f_handler)
+
 
 
 def get_team_abbr():
@@ -82,8 +102,8 @@ def get_game_score():
         if s not in data:
             url = url_prefix + day.strftime('%m/%d/%Y')
             data[s] = scrape_score(url, team_abbr)
-            print(f'Getting the scores on {s} successfully')
-            print(data[s])
+            log.info(f'Getting the scores on {s} successfully')
+            log.info(data[s])
         day += delta_day
         time.sleep(10)
 
@@ -93,6 +113,7 @@ def get_game_score():
 
 def main():
     get_game_score()
+
 
 if __name__ == '__main__':
     main()
