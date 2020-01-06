@@ -94,7 +94,7 @@ def populate_game(filename):
 
 
 if __name__ == '__main__':
-    path = './flaskapp/nbadata'
+    path = './webcrawler/nba/nbadata'
 
     team_json = os.path.join(path, 'team_full.json')
     populate_team(team_json)

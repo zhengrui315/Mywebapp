@@ -9,3 +9,4 @@ tmp.txt
 .DS_Store
 webcrawler/*/*data
 webcrawler/*data
+*logs/

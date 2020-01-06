@@ -70,8 +70,8 @@ def scrape_score(url, team_abbr):
     driver.get(url)
     element = driver.find_element_by_css_selector('#scoresPage > div.row.collapse > div.scores__inner.large-9.medium-8.columns > div > div')
 
-    data = []
-    for row in element.find_elements_by_class_name('linescores-table'):
+    results = []
+    for row in driver.find_elements_by_class_name('linescores-table'):
         teams = row.find_elements_by_class_name('team-name')
         scores = row.find_elements_by_class_name('final')
 
@@ -79,9 +79,12 @@ def scrape_score(url, team_abbr):
         home_team = team_abbr[teams[1].text.strip()]
         away_score = scores[1].text.strip()
         home_score = scores[2].text.strip()
-        data.append([away_team, home_team, away_score, home_score])
+        results.append([away_team, home_team, away_score, home_score])
+        log.info([away_team, home_team, away_score, home_score])
+        assert all([away_team, home_team, away_score, home_score]), 'data is wrong'
+
     driver.close()
-    return data
+    return results
 
 
 def get_game_score():
@@ -100,12 +103,13 @@ def get_game_score():
     while day < date.today():
         s = day.strftime('%Y-%m-%d')
         if s not in data:
+            log.info(s)
             url = url_prefix + day.strftime('%m/%d/%Y')
-            data[s] = scrape_score(url, team_abbr)
-            log.info(f'Getting the scores on {s} successfully')
-            log.info(data[s])
+            game_result = scrape_score(url, team_abbr)
+            if game_result:
+                data[s] = game_result
+            time.sleep(10)
         day += delta_day
-        time.sleep(10)
 
     with open(filename, 'w') as f:
         json.dump(data, f)
