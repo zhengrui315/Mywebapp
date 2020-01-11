@@ -47,7 +47,7 @@ def main():
         print(t)
         print(team[t])
 
-    team_full = os.path.join(path, 'team_full1.json')
+    team_full = os.path.join(path, 'team_full.json')
     with open(team_full, 'w') as f:
         json.dump(team, f)
     print('success')
