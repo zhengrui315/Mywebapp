@@ -1,6 +1,7 @@
 from flaskapp.routes import app, base_bp
 from flaskapp.api_routes import api_bp
-from flaskapp.model.initialization import initialize
+from flaskapp.api_nba_routes import nba_bp
+
 import os
 
 
@@ -28,6 +29,7 @@ def configure_app(app=app):
     # register blueprint
     app.register_blueprint(base_bp)
     app.register_blueprint(api_bp)
+    app.register_blueprint(nba_bp)
     # set up admin
 
 

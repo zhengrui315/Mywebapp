@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import Marker from './Marker';
 
-class CampSite extends Component {
+class NBAMap extends Component {
     constructor() {
         super();
         this.state = {
@@ -20,7 +20,7 @@ class CampSite extends Component {
 
     componentDidMount() {
         this.getGeoLocation();
-        this.getCampSites();
+        this.getNBAArena();
     }
 
     createMapOption(maps) {
@@ -51,10 +51,10 @@ class CampSite extends Component {
         }
     }
 
-    getCampSites() {
-        axios.get('/api/main/campsites/')
+    getNBAArena() {
+        axios.get('/api/nba/arena/')
             .then((resp) => {
-                this.setState({markers: [...this.state.markers, ...resp.data.campsites]});
+                this.setState({markers: [...this.state.markers, ...resp.data.arena_list]});
             })
             .catch((err) => {
                 console.log(err);
@@ -87,9 +87,11 @@ class CampSite extends Component {
                         >
                             {this.state.markers.map(marker => (
                                 <Marker
-                                    key={marker.id}
-                                    lat={marker.lat}
-                                    lng={marker.lng}
+                                    key={marker.team_name}
+                                    arena_name={marker.arena_name}
+                                    lat={marker.latitude}
+                                    lng={marker.longitude}
+                                    team_name={marker.team_name}
                                     color={'blue'}
                                 />
                             ))}
@@ -101,4 +103,4 @@ class CampSite extends Component {
   }
 }
 
-export default CampSite;
+export default NBAMap;

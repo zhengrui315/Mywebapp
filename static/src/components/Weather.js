@@ -33,7 +33,7 @@ class Weather extends Component {
     }
 
     getWeather(lat, lng) {
-        axios.get('/api/weather/', {
+        axios.get('/api/main/weather/', {
             params: {
                 'lat': lat,
                 'lng': lng

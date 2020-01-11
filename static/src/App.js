@@ -5,6 +5,7 @@ import HomePage from './components/HomePage';
 import MachineLearning from './components/MachineLearning';
 import CampSite from './components/CampSite';
 import AddCampSite from './components/AddCampSite';
+import NBAMap from './components/NBAMap';
 import NavBar from './components/NavBar';
 import NoMatch from './components/NoMatch';
 
@@ -20,6 +21,7 @@ const App = () => {
                     <Route exact path='/machinelearning/' component={MachineLearning} />
                     <Route exact path='/campsites/' component={CampSite} />
                     <Route exact path='/campsite_add/' component={AddCampSite} />
+                    <Route exact path='/nba/' component={NBAMap} />
                     <Route component={NoMatch} />
                 </Switch>
             </div>

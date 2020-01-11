@@ -6,7 +6,7 @@ import { Form, Button } from 'react-bootstrap';
 class AddCampSite extends Component {
     handleSubmit(e) {
         e.preventDefault();
-        axios.post('/api/campsite/add/', {
+        axios.post('/api/main/campsite/add/', {
             'name': e.target.elements.name.value,
             'latitude': e.target.elements.lat.value,
             'longitude': e.target.elements.lng.value,

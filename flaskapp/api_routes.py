@@ -6,7 +6,7 @@ from flaskapp.model.utils import create_mysql_engine
 from flaskapp.model.models import CampSite
 from sqlalchemy.orm import sessionmaker
 
-api_bp = Blueprint('api', __name__, url_prefix='/api')
+api_bp = Blueprint('api', __name__, url_prefix='/api/main/')
 
 @api_bp.route('/campsites/', methods=['GET'])
 def fetch_campsites():
@@ -79,4 +79,3 @@ def get_weather():
         weather[key] = value.strip()
 
     return jsonify({'temp': temp, 'weather': weather})
-
