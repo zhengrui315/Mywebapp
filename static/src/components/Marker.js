@@ -31,16 +31,13 @@ const markerHoverStyle = {
 }
 
 
-
 class Marker extends Component {
     constructor(props) {
         super(props);
     }
 
-
     handleClick() {
-        console.log("dd");
-//        window.open("https://www.google.com", "_blank");
+        window.open("https://www.google.com", "_blank");
     }
 
     render() {

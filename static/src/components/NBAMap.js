@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
+import { Form, Row, Col, Dropdown } from 'react-bootstrap';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 import Marker from './Marker';
 import DateSlider from './DateSlider/DateSlider';
@@ -16,8 +18,11 @@ class NBAMap extends Component {
                 'latitude': null,
                 'longitude': null
             },
-            zoom: 8,
+            zoom: 5,
             markers: [],
+            mode: null,
+            dropDownValue: null,
+            dropDownList: [],
             dateInfo: {
                 selected: today,
                 updated: today
@@ -27,10 +32,18 @@ class NBAMap extends Component {
 
     componentDidMount() {
         this.getGeoLocation();
-        this.getNBAArena();
+        this.getMarkerList();
     }
 
-    onChange = ([ms]) => {
+    handleModeSelect = (e) => {
+        this.setState({mode: e});
+    }
+
+    handleDropDownSelect = (e) => {
+        this.setState({dropDownValue: e});
+    }
+
+    onDateChange = ([ms]) => {
         this.setState({
             dateInfo: {
                 ...this.state.dateInfo,
@@ -39,7 +52,7 @@ class NBAMap extends Component {
         });
     }
 
-    onUpdate = ([ms]) => {
+    onDateUpdate = ([ms]) => {
         this.setState({
             dateInfo: {
                 ...this.state.dateInfo,
@@ -76,7 +89,7 @@ class NBAMap extends Component {
         }
     }
 
-    getNBAArena() {
+    getMarkerList = () => {
         axios.get('/api/nba/arena/')
             .then((resp) => {
                 this.setState({markers: [...this.state.markers, ...resp.data.arena_list]});
@@ -94,17 +107,41 @@ class NBAMap extends Component {
         return (
             <div>
                 <div>
+                    <Form onSubmit={this.handleSubmit}>
+                        <Form.Row>
+                            <Col>
+                                <DropdownButton
+                                    id="dropdown-basic-button"
+                                    title={this.state.mode ? this.state.mode : "Select Mode"}
+                                    onSelect={this.handleModeSelect}
+                                >
+                                    <Dropdown.Item eventKey="Arena"> Arena </Dropdown.Item>
+                                    <Dropdown.Item eventKey="Team"> Team </Dropdown.Item>
+                                </DropdownButton>
+                            </Col>
+                            <Col>
+                                <DropdownButton
+                                    id="dropdown-basic-button"
+                                    title={this.state.dropDownValue ? this.state.dropDownValue : "Dropdown Button"}
+                                    onSelect={this.handleDropDownSelect}
+                                >
+                                    {this.state.markers.map((marker) => (<Dropdown.Item key={marker.arena_name} eventKey={marker.arena_name}>{marker.arena_name}</Dropdown.Item>))}
+                                </DropdownButton>
+                            </Col>
+                        </Form.Row>
+                    </Form>
+
                     <DateSlider
                         min={start}
                         max={end}
                         selected={this.state.dateInfo.selected}
                         updated={this.state.dateInfo.updated}
-                        onChange={this.onChange}
-                        onUpdate={this.onUpdate}
+                        onChange={this.onDateChange}
+                        onUpdate={this.onDateUpdate}
                     />
                 </div>
-                <div>
 
+                <div>
                     {/* Important! Always set the container height explicitly */}
                     <div className='googlemap'>
                         <GoogleMapReact
