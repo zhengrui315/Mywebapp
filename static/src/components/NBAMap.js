@@ -9,19 +9,43 @@ import DateSlider from './DateSlider/DateSlider';
 class NBAMap extends Component {
     constructor() {
         super();
+
+        const today = new Date();
         this.state = {
             center: {
                 'latitude': null,
                 'longitude': null
             },
             zoom: 8,
-            markers: []
+            markers: [],
+            dateInfo: {
+                selected: today,
+                updated: today
+            }
         };
     }
 
     componentDidMount() {
         this.getGeoLocation();
         this.getNBAArena();
+    }
+
+    onChange = ([ms]) => {
+        this.setState({
+            dateInfo: {
+                ...this.state.dateInfo,
+                selected: new Date(ms)
+            }
+        });
+    }
+
+    onUpdate = ([ms]) => {
+        this.setState({
+            dateInfo: {
+                ...this.state.dateInfo,
+                updated: new Date(ms)
+            }
+        });
     }
 
     createMapOption(maps) {
@@ -63,20 +87,24 @@ class NBAMap extends Component {
     }
 
     render() {
+        {/* month Integer value representing the month, beginning with 0 for January to 11 for December. */}
+        const start = new Date(2019, 9, 22);
+        const end = new Date(2020, 4, 22);
+
         return (
             <div>
                 <div>
-                    <form className="form-inline md-form form-sm mt-0">
-                        <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-                            aria-label="Search"/>
-                        <button className="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
-                        <Link to='/campsite_add/' id="add-new"><button className="btn btn-outline-warning btn-rounded btn-sm my-0"> add new </button></Link>
-                    </form>
+                    <DateSlider
+                        min={start}
+                        max={end}
+                        selected={this.state.dateInfo.selected}
+                        updated={this.state.dateInfo.updated}
+                        onChange={this.onChange}
+                        onUpdate={this.onUpdate}
+                    />
                 </div>
                 <div>
-                    <div className='map-sidebar'>
 
-                    </div>
                     {/* Important! Always set the container height explicitly */}
                     <div className='googlemap'>
                         <GoogleMapReact

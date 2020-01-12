@@ -17,32 +17,9 @@ function formatTick(ms) {
 const oneDay = 1000 * 60 * 60 * 24;
 
 class DateSlider extends Component {
-  constructor() {
-    super();
-
-    const today = startOfToday();
-    {/* month Integer value representing the month, beginning with 0 for January to 11 for December. */}
-    const start = new Date(2019, 9, 22);
-    const end = new Date(2020, 4, 22);
-    this.state = {
-      selected: today,
-      updated: today,
-      min: start,
-      max: end
-    };
+  constructor(props) {
+    super(props);
   }
-
-  onChange = ([ms]) => {
-    this.setState({
-      selected: new Date(ms)
-    });
-  };
-
-  onUpdate = ([ms]) => {
-    this.setState({
-      updated: new Date(ms)
-    });
-  };
 
   renderDateTime(date, header) {
     return (
@@ -61,8 +38,7 @@ class DateSlider extends Component {
   }
 
   render() {
-    const { min, max, selected, updated } = this.state;
-
+    const { min, max, selected, updated, onChange, onUpdate } = this.props;
     const dateTicks = scaleTime()
       .domain([min, max])
       .ticks(8)
@@ -72,14 +48,14 @@ class DateSlider extends Component {
       <div>
         {this.renderDateTime(selected, "Selected")}
         {this.renderDateTime(updated, "Updated")}
-        <div style={{ margin: "5%", height: 120, width: "90%" }}>
+        <div style={{ margin: "5%", height: 20, width: "90%" }}>
           <Slider
             mode={1}
             step={oneDay}
             domain={[+min, +max]}
             rootStyle={sliderStyle}
-            onUpdate={this.onUpdate}
-            onChange={this.onChange}
+            onUpdate={onUpdate}
+            onChange={onChange}
             values={[+selected]}
           >
             <Rail>
