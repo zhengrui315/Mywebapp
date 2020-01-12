@@ -56,3 +56,35 @@
     font-size: 25px;
     text-align: center;
 }
+
+.nba_arena_tooptip {
+  width: 150px;
+  height: 75px;
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+  position: relative;
+  left:-15px;
+  margin: 0px;
+  float: left;
+  font-size: 12px;
+}
+
+.nba_arena_tooptip.nba_arena_arrow_top {
+  margin-top: 25px;
+}
+
+.nba_arena_tooptip.nba_arena_arrow_top:after {
+  content: " ";
+  position: absolute;
+  left: 00px;
+  top: -25px;
+  border-top: none;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-bottom: 25px solid black;
+}
+
+.nba_arena_tooptip:hover .nba_arena_tooptip {
+  visibility: visible;
+}

@@ -25,8 +25,12 @@ const markerStyle = {
 
 const markerHoverStyle = {
     ...markerStyle,
-    fontSize: 16
+    fontSize: 16,
+    border:'transparent',
+    backgroundColor: 'transparent'
 }
+
+
 
 class Marker extends Component {
     constructor(props) {
@@ -35,7 +39,8 @@ class Marker extends Component {
 
 
     handleClick() {
-        window.open("https://www.google.com", "_blank");
+        console.log("dd");
+//        window.open("https://www.google.com", "_blank");
     }
 
     render() {
@@ -50,7 +55,12 @@ class Marker extends Component {
                 title={arena_name}
                 onClick={this.handleClick}
             >
-                {this.props.$hover ? this.props.arena_name : ''}
+                {this.props.$hover ? (
+                    <div className='nba_arena_tooptip nba_arena_arrow_top'>
+                        {this.props.arena_name}
+                        <div><a href="www.facebook.com"> facebook</a></div>
+                    </div>
+                ) : ''}
             </div>
         )
     }

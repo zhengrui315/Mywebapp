@@ -84,6 +84,7 @@ class NBAMap extends Component {
                             zoom={this.state.zoom}
                             yesIWantToUseGoogleMapApiInternals
                             options={this.createMapOptions}
+                            hoverDistance={100}
                         >
                             {this.state.markers.map(marker => (
                                 <Marker
