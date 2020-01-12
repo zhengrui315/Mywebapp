@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 
 import Marker from './Marker';
+import DateSlider from './DateSlider/DateSlider';
 
 class NBAMap extends Component {
     constructor() {

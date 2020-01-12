@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
-import { SliderRail, Handle, Track, Tick } from "./components"; // example render components - source below
+import { SliderRail, Handle, Track, Tick } from "./components";
 import { subDays, startOfToday, format } from "date-fns";
 import { scaleTime } from "d3-scale";
 
@@ -14,22 +14,21 @@ function formatTick(ms) {
   return format(new Date(ms), "MMM dd");
 }
 
-const halfHour = 1000 * 60 * 30;
+const oneDay = 1000 * 60 * 60 * 24;
 
 class DateSlider extends Component {
   constructor() {
     super();
 
     const today = startOfToday();
-    const fourDaysAgo = subDays(today, 4);
-    const oneWeekAgo = subDays(today, 7);
-    const startd = new Date(2019, 10, 22);
-    const endd = new Date(2020, 5, 22);
+    {/* month Integer value representing the month, beginning with 0 for January to 11 for December. */}
+    const start = new Date(2019, 9, 22);
+    const end = new Date(2020, 4, 22);
     this.state = {
-      selected: fourDaysAgo,
-      updated: fourDaysAgo,
-      min: startd,
-      max: endd
+      selected: today,
+      updated: today,
+      min: start,
+      max: end
     };
   }
 
@@ -76,7 +75,7 @@ class DateSlider extends Component {
         <div style={{ margin: "5%", height: 120, width: "90%" }}>
           <Slider
             mode={1}
-            step={halfHour}
+            step={oneDay}
             domain={[+min, +max]}
             rootStyle={sliderStyle}
             onUpdate={this.onUpdate}
