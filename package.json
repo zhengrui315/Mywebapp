@@ -23,7 +23,7 @@
     "css-loader": "^3.4.0",
     "dotenv-webpack": "^1.7.0",
     "install": "^0.13.0",
-    "npm": "^6.13.6",
+    "npm": "^6.14.6",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-compound-slider": "^2.5.0",
