@@ -37,7 +37,7 @@
     "@babel/polyfill": "^7.7.0",
     "@babel/runtime": "^7.7.7",
     "babel-loader": "^8.0.6",
-    "d3-scale": "^3.2.1",
+    "d3-scale": "^4.0.2",
     "date-fns": "^2.9.0",
     "google-map-react": "^1.1.5",
     "prop-types": "^15.7.2"
